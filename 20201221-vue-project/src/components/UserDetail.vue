@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import { eventBus } from '../main';
-import { dateFormat } from '../mixins/dateFormat';
+import { eventBus } from '../main'; // eventBus 라는 개념을 통해서 자식간에 데이터를 공유할수 있음
+import { dateFormat } from '../mixins/dateFormat'; // mixin 을 사용하기 위해서 임포트
 export default {
     data(){
         return {
@@ -45,7 +45,7 @@ export default {
 
         // }
     },
-    mixins : [dateFormat]
+    mixins : [dateFormat] //mixin을 사용하면 중복되는 코드를 줄일수 있음? 정확히 mixin 을 모르겠음...
 }
 </script>
 

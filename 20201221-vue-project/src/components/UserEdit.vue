@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import { eventBus } from '../main'
+import { eventBus } from '../main'; // eventBus 라는 개념을 통해서 자식간에 데이터를 공유할수 있음
 export default {
-    props : ['name', 'address', 'phone', 'hasDog'],
+    props : ['name', 'address', 'phone', 'hasDog'], //부모에게서 받은 데이터를 사용할때 props 사용
     data(){
         return {
             user : {

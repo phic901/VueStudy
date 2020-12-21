@@ -11,20 +11,30 @@
             :phone="phone"
             :hasDog="hasDog"
         />
+
+        <!-- 왼쪽이 자식(:) 오른쪽이 부모의 변수 -->
         <UserEdit
             :name="name" 
             :address="address"
-            :phone="phone"
+            :phone="phone" 
             :hasDog="hasDog"        
             @child="parent"
         />
+         <!-- 
+             @child="parent" 의미
+             UserEdit 컴포넌트 에서 child 함수가 존재하는데 
+             child 함수내부에서 this.$emit('child', this.user); 을 통하여 부모함수에서 @child 함수를 리슨하고 있다가
+             호출되면 parent 함수를 호출함.
+            child 함수내부에서 this.$emit('child', this.user); 로 호출하면 parent에 argument로 this.user를 받음
+         -->
+
     </div>
 </template>
 
 <script>
 import UserDetail from './UserDetail.vue';
 import UserEdit from './UserEdit.vue';
-import { dateFormat } from '../mixins/dateFormat'; // mixin에 대해서
+import { dateFormat } from '../mixins/dateFormat'; // mixin 을 사용하기 위해서 임포트
 export default {
     data(){
         return {
@@ -60,7 +70,7 @@ export default {
         //     return `${fullDate} ${hour}:${minutes}`;
         // }
     },
-    mixins : [dateFormat]
+    mixins : [dateFormat] //mixin을 사용하면 중복되는 코드를 줄일수 있음? 정확히 mixin 을 모르겠음...
 
 }
 </script>
