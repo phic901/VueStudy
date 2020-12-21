@@ -2,6 +2,7 @@
     
     <div id="user-wrp">
         <h1>User.vue</h1>
+        <p>{{ getDateAndTime(createdAt) }}</p>
         <b>name : {{ name }}</b>
         <button @click="changeName">이름변경버튼</button>
         <UserDetail 
@@ -23,6 +24,7 @@
 <script>
 import UserDetail from './UserDetail.vue';
 import UserEdit from './UserEdit.vue';
+import { dateFormat } from '../mixins/dateFormat'; // mixin에 대해서
 export default {
     data(){
         return {
@@ -30,7 +32,11 @@ export default {
             address : 'Seoul',
             phone : '1234-5678',
             hasDog : true,
+            createdAt : null,
         }
+    },
+    created(){
+        this.createdAt = new Date();
     },
     components : {
         UserDetail,
@@ -46,8 +52,16 @@ export default {
             this.address = user.address;
             this.phone = user.phone;
             this.hasDog = user.hasDog;
-        }
-    }
+        },
+        // getDateAndTime(date){
+        //     let hour = date.getHours();
+        //     let minutes = date.getMinutes();
+        //     let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+        //     return `${fullDate} ${hour}:${minutes}`;
+        // }
+    },
+    mixins : [dateFormat]
+
 }
 </script>
 

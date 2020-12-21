@@ -7,13 +7,14 @@
         <p>address : {{address}}</p>
         <p>phone : {{phone}}</p>
         <p>hasDogKr : {{hasDogKr}}</p>
-        <p>수정일자 : {{editedDate}}</p>
+        <p>수정일자 : {{ getDateAndTime(editedDate) }}</p>
     </div>
 
 </template>
 
 <script>
-import { eventBus } from '../main'
+import { eventBus } from '../main';
+import { dateFormat } from '../mixins/dateFormat';
 export default {
     data(){
         return {
@@ -30,7 +31,21 @@ export default {
         eventBus.$on('userWasEdited', (date) => {
             this.editedDate = date;
         })
-    }
+    },
+    methods : {
+        // getDateAndTime(date){
+        //     if(date !== null){
+        //         let hour = date.getHours();
+        //         let minutes = date.getMinutes();
+        //         let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+        //         return `${fullDate} ${hour}:${minutes}`;
+        //     }else{
+        //         return null;
+        //     }
+
+        // }
+    },
+    mixins : [dateFormat]
 }
 </script>
 
