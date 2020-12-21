@@ -1,0 +1,10 @@
+npm install -g @vue/cli
+npx vue create test-vue-project
+npm run serve
+npm install vue-router --save
+
+
+npm install vue bootstrap-vue bootstrap
+
+
+https://vuejs.org/v2/guide/instance.html
