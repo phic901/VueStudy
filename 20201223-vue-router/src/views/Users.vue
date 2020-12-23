@@ -33,6 +33,20 @@ export default {
         return{
             userId : null
         }
+    },
+    beforeRouteEnter(to, from, next){
+        console.log('before enter');
+        next();
+    },
+    beforeRouteLeave(to, from ,next){
+        console.log('before leave');
+        next();
+    },
+    created(){
+        console.log('created');
+    },
+    destoryed(){
+        console.log('destory');
     }
 }
 </script>
