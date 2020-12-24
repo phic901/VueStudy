@@ -22,6 +22,17 @@ export default new Vuex.Store({
      *  return state.allUsers.length; 위랑 같음
      * }
      */
+    ,
+    countOfSeoul : state => {
+      let count = 0;
+      state.allUsers.forEach(user => {
+        if(user.address === 'Seoul') count++;
+      })
+      return count;
+    },
+    percentOfSeoul: (state, getters) => { //state, getters 이렇게 선언해줘야 getters 로 접근할수있음
+      return Math.round(getters.countOfSeoul / getters.allUsersCount * 100);
+    }
 
   },
   mutations: {
